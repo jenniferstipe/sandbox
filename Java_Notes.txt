@@ -1,0 +1,38 @@
+import java.awt.*; 
+import javax.swing.*;
+
+Java comes with a set of code libraries that are designed to help programmers. 
+They provide access to classes that perform specific functions, to save you the bother of having to write them yourself.
+
+The two import statements above, let the compiler know that the application wants to use some of the pre-built 
+functionality contained within the "AWT" and "Swing" code libraries.
+
+AWT stands for “Abstract Window Toolkit”. It contains classes that programmers can use to make graphical 
+components, e.g., buttons, labels, frames. Swing is built on top of AWT, and provides a new set of more 
+sophisticated graphical interface components. With just two lines of code, we gain access to these graphical 
+components, and can use them in the Java application.
+
+-Import-
+
+In dynamic languages, when the interpreter imports, it simply reads a file and evaluates it.
+
+In Java, import is simply used by the compiler to let you name your classes by their unqualified name, 
+let's say String instead of java.lang.String. You don't really need to import java.lang.* because the 
+compiler does it by default. However this mechanism is just to save you some typing. Types in Java are 
+fully qualified class names, so a String is really a java.lang.String object when the code is run. Packages 
+are intended to prevent name clashes and allow two classes to have the same simple name, instead of relying 
+on the old C convention of prefixing types like this. java_lang_String. This is called namespacing.
+
+BTW, in Java there's the static import construct, which allows to further save typing if you use lots of 
+constants from a certain class. In a compilation unit (a .java file) which declares
+
+import static java.lang.Math.*;
+you can use the constant PI in your code, instead of referencing it through Math.PI, and the method cos() 
+instead of Math.cos(). So for example you can write
+
+double r = cos(PI * theta);
+Once you understand that classes are always referenced by their fully qualified name in the final bytecode, 
+you must understand how the class code is actually loaded. This happens the first time an object of that class 
+is created, or the first time a static member of the class is accessed. At this time, the ClassLoader tries 
+to locate the class and instantiate it. If it can't find the class, a ClassNotFoundException is thrown. 
+To locate the class, the ClassLoader usually checks the paths listed in the $CLASSPATH environment variable.
